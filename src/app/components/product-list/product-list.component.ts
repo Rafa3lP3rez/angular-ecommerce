@@ -21,7 +21,6 @@ export class ProductListComponent implements OnInit {
     this.route.paramMap.subscribe(() => {
       this.listProducts();
     });
-    this.listProducts();
   }
 
   listProducts() {
@@ -30,14 +29,14 @@ export class ProductListComponent implements OnInit {
 
     if (hasCategoryId) {
       this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!;
-    } else{
+    } else {
       this.currentCategoryId = 1;
     }
 
-
-
-    this.productService.getProductList(this.currentCategoryId).subscribe((data) => {
-      this.products = data;
-    });
+    this.productService
+      .getProductList(this.currentCategoryId)
+      .subscribe((data) => {
+        this.products = data;
+      });
   }
 }
