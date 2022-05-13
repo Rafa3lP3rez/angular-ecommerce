@@ -1,38 +1,37 @@
 <div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <div class="row">
+        <div *ngFor="let tempProduct of products" class="col-md-3">
+          <div class="product-box">
 
-    <div class="section-content section-content-p30">
+            <a routerLink="/products/{{ tempProduct.id }}">
 
-        <div class="container-fluid">
-
-            <div class="row">
-
-
-                <div *ngFor="let tempProduct of products" class="col-md-3">
-
-                    <div class="product-box">
-
-                        <img src="{{tempProduct.imageUrl}}" class="omg-responsive">
-                        <h1>{{ tempProduct.name }}</h1>
-
-                        <div class="price">{{tempProduct.unitPrice | currency:'USD'}}</div>
-
-                        <a href="#" class="primary-btn">Agregar al carrito</a>
-
-
-                    </div>
-
-
-                </div>
-
-
+            <img src="{{ tempProduct.imageUrl }}" class="omg-responsive" />
+            
+            </a>
+            
+            <a routerLink="/products/{{ tempProduct.id }}">
+            <h1>{{ tempProduct.name }}</h1>
+            </a>
+            <div class="price">
+              {{ tempProduct.unitPrice | currency: "USD" }}
             </div>
 
-
-
+            <a href="#" class="primary-btn">Agregar al carrito</a>
+          </div>
         </div>
 
+        <!-- if products empty the display a message-->
+
+        <div
+          *ngIf="products?.length == 0"
+          class="alert alert-warning"
+          role="alert"
+        >
+          No products found.
+        </div>
+      </div>
     </div>
-
-
-
+  </div>
 </div>
